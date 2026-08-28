@@ -1,4 +1,4 @@
-"""Streamlit workbench for the EfficientNet-B0 cancer-detection prototype."""
+"""Streamlit workbench for the EfficientNet-B0 classification prototype."""
 
 from __future__ import annotations
 
@@ -18,7 +18,7 @@ from meddetect.inference import apply_threshold, run_inference
 from meddetect.model import load_checkpoint
 from meddetect.preprocess import ImageLoadError, load_rgb_image
 
-PAGE_TITLE = "Medical Image Cancer Detection Prototype"
+PAGE_TITLE = "Medical Image Classification Prototype"
 
 
 def _inject_styles() -> None:
@@ -125,7 +125,7 @@ def main() -> None:
     st.set_page_config(page_title=PAGE_TITLE, page_icon="🧬", layout="wide")
     _inject_styles()
 
-    st.title("Medical Image Cancer Detection Prototype")
+    st.title("Medical Image Classification and Grad-CAM Prototype")
     st.caption("Python · PyTorch · EfficientNet-B0 · Streamlit · 2025")
     st.markdown(f'<div class="disclaimer-banner">{DISCLAIMER}</div>', unsafe_allow_html=True)
 

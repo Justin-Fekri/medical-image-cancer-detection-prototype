@@ -1,0 +1,12 @@
+[project]
+name = "medical-image-cancer-detection"
+version = "0.1.0"
+description = "Educational EfficientNet-B0 prototype for binary classification of medical images, with Grad-CAM interpretability and a Streamlit reviewer interface."
+requires-python = ">=3.10"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.setuptools]
+packages = ["src"]

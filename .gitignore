@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.venv/
+venv/
+env/
+
+# Generated data and model artifacts
+data/**/*.png
+data/**/*.jpg
+data/**/*.jpeg
+data/**/*.tif
+models/*.pt
+models/*.json
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+train.log
+.claude/
+streamlit.log

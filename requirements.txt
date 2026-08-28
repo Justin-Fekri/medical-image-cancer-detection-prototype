@@ -1,0 +1,14 @@
+torch>=2.2
+torchvision>=0.17
+streamlit>=1.32
+pillow>=10.0
+
+# Capped below 2.0 on purpose. torch wheels built before 2.3 -- which is what
+# pip resolves to on Intel macOS, where torch stopped shipping new wheels after
+# 2.2.2 -- are compiled against the NumPy 1.x C API and raise
+# "Numpy is not available" at the torch <-> numpy boundary under NumPy 2.
+# NumPy 1.26 works with every supported torch version, so this cap is safe
+# everywhere rather than being a platform-specific workaround.
+numpy>=1.24,<2.0
+
+pytest>=8.0

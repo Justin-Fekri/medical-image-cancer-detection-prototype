@@ -2,8 +2,11 @@ name: CI
 
 on:
   push:
-    branches: [main]
+    # v2 is included while the rebuilt version is under review on its own
+    # branch; drop it once this becomes the default branch.
+    branches: [main, v2]
   pull_request:
+  workflow_dispatch:
 
 jobs:
   test:

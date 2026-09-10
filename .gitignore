@@ -6,7 +6,6 @@ __pycache__/
 .venv/
 venv/
 env/
-
 # Generated data and model artifacts
 data/**/*.png
 data/**/*.jpg
@@ -14,11 +13,10 @@ data/**/*.jpeg
 data/**/*.tif
 models/*.pt
 models/*.json
-
 # OS / editor
 .DS_Store
 .idea/
 .vscode/
 train.log
-.claude/
 streamlit.log
+.claude/

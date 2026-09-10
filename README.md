@@ -7,6 +7,10 @@ reviewer-facing interface.
 
 `Python` · `PyTorch` · `EfficientNet-B0` · `Grad-CAM` · `Streamlit`
 
+[![CI](https://github.com/Justin-Fekri/medical-image-cancer-detection/actions/workflows/ci.yml/badge.svg)](https://github.com/Justin-Fekri/medical-image-cancer-detection/actions/workflows/ci.yml)
+![Python](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
+
 ---
 
 ## ⚠️ Not a diagnostic tool

@@ -1,0 +1,62 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+
+      - name: Install dependencies
+        # CPU-only torch keeps the CI image small; the test suite builds the
+        # network with pretrained=False, so no weights are downloaded.
+        run: |
+          python -m pip install --upgrade pip
+          pip install --index-url https://download.pytorch.org/whl/cpu \
+            torch torchvision
+          pip install "numpy<2.0" pillow pytest
+
+      - name: Test
+        run: pytest -q
+
+  smoke:
+    # Proves the documented quickstart actually runs end to end: generate
+    # data, train, evaluate. Kept tiny so it finishes on a CI runner.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install --index-url https://download.pytorch.org/whl/cpu \
+            torch torchvision
+          pip install "numpy<2.0" pillow pytest
+
+      - name: Generate sample data
+        run: python scripts/make_sample_data.py --n 24
+
+      - name: Train (head-only, 1 epoch)
+        run: python -m src.train --freeze-backbone --epochs 1 --batch-size 8 --num-workers 0
+
+      - name: Evaluate
+        run: python -m src.evaluate --num-workers 0

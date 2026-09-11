@@ -1,10 +1,21 @@
 # Medical Image Classification and Grad-CAM Prototype
 
+![CI](https://github.com/Justin-Fekri/medical-image-cancer-detection-prototype/actions/workflows/ci.yml/badge.svg)
+![Python](https://img.shields.io/badge/python-3.11+-blue)
+![PyTorch](https://img.shields.io/badge/PyTorch-EfficientNet--B0-EE4C2C)
+![Research only](https://img.shields.io/badge/status-research%20only-important)
+![License](https://img.shields.io/badge/license-MIT-green)
+
 Educational and research-only CNN prototype (2025). **This is not a diagnostic device** and must not be used to screen, diagnose, treat, or rule out cancer.
 
 The app takes a medical image, standardizes it to **224×224 RGB**, scores it with **EfficientNet-B0** (PyTorch), and shows a **sigmoid probability** against an **adjustable classification threshold**. **Grad-CAM** overlays highlight regions that influenced the score so a reviewer can inspect the decision.
 
 Read [DISCLAIMER.md](DISCLAIMER.md) before running anything.
+
+![The workbench scoring a synthetic lesion sample: sigmoid probability 0.991 against a 0.50 review threshold, flagged for review, with the Grad-CAM overlay and class-activation heatmap beside it.](docs/gradcam-result.png)
+
+The screenshot above is the bundled synthetic checkpoint scoring `samples/synthetic_lesion_01.png`. Grad-CAM localizes to the generated lesion, which confirms the attribution path is wired correctly — it is **not** evidence that the network learned clinically meaningful features. The samples are generated, and the two classes were drawn to be easy to separate.
+
 
 ## What you get
 
@@ -28,6 +39,9 @@ streamlit run app.py --server.port 43127 --server.address 0.0.0.0
 ```
 
 Open `http://127.0.0.1:43127`. Upload a PNG/JPEG (or pick a file under `samples/`). Move the **Classification threshold** slider to see how the review flag changes without re-running the network.
+
+![The workbench before an image is loaded: reviewer controls with the classification threshold, model summary, and the research-only banner.](docs/workbench.png)
+
 
 CPU is enough. A GPU is optional (`python train.py --device cuda`).
 

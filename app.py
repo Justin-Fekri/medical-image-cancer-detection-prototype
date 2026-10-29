@@ -126,7 +126,7 @@ def main() -> None:
     _inject_styles()
 
     st.title("Medical Image Classification and Grad-CAM Prototype")
-    st.caption("Python · PyTorch · EfficientNet-B0 · Streamlit · 2025")
+    st.caption("Python · PyTorch · EfficientNet-B0 · Streamlit")
     st.markdown(f'<div class="disclaimer-banner">{DISCLAIMER}</div>', unsafe_allow_html=True)
 
     samples = _list_samples()

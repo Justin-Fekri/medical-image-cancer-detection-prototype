@@ -6,7 +6,7 @@
 ![Research only](https://img.shields.io/badge/status-research%20only-important)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
-Educational and research-only CNN prototype (2025). **This is not a diagnostic device** and must not be used to screen, diagnose, treat, or rule out cancer.
+Educational and research-only CNN prototype. **This is not a diagnostic device** and must not be used to screen, diagnose, treat, or rule out cancer.
 
 The app takes a medical image, standardizes it to **224×224 RGB**, scores it with **EfficientNet-B0** (PyTorch), and shows a **sigmoid probability** against an **adjustable classification threshold**. **Grad-CAM** overlays highlight regions that influenced the score so a reviewer can inspect the decision.
 
